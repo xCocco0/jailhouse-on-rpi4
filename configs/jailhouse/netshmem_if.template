@@ -1,0 +1,6 @@
+auto <ifname>
+allow-hotplug <ifname>
+iface <ifname> inet static
+  address <iflow>
+  netmask 255.255.255.0
+  gateway <iflow>
