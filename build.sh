@@ -116,13 +116,13 @@ case $1 in
 		if [ "$use_palloc" == "y" ]; then
 			cp ../palloc/palloc-5.15.patch ./jailhouse/
 		else
-			sed -E -i"" "s/(BR2_LINUX_KERNEL_PATCH)/#\1/g" ./configs/buildroot/raspberrypi4jailhouse_br_defconfig
+			sed -E -i"" "s/(BR2_LINUX_KERNEL_PATCH)/#\1/g" ./configs/raspberrypi4jailhouse_br_defconfig
 		fi
 		if [ "$disable_rt" == "y" ]; then
-			sed -E -i"" "s/(jailhouse-enabling\/[0-9\.])*-rt/\1/g" ./jailhouse/raspberrypi4jailhouse_br_defconfig
+			sed -E -i"" "s/(jailhouse-enabling\/[0-9\.]*)-rt/\1/g" ./configs/raspberrypi4jailhouse_br_defconfig
 		fi
 		make raspberrypi4jailhouse_br_defconfig
-		utils/brmake -j2
+		./utils/brmake -j2
 		;;
 	jailhouse)
 		checkfiles
